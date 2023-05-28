@@ -1,27 +1,35 @@
 const pokemonList = document.getElementById('pokemonList')
 const loadMoreButton = document.getElementById('loadMoreButton')
 
+
 const maxRecords = 151
 const limit = 1
 let offset = 0;
 
 function convertPokemonToLi(pokemon) {
     return `
-        <li class="pokemon ${pokemon.type}">
-            <span class="number">#${pokemon.number}</span>
-            <span class="name">${pokemon.name}</span>
+    <li class="pokemon ${pokemon.type}" onclick="PokemonClickCard('${pokemon.name}', this)">
+        <span class="number">#${pokemon.number}</span>
+        <span class="name">${pokemon.name}</span>
+    
+        <div class="detail">
+            <ol class="types">
+                ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
+            </ol>
+            <img src="${pokemon.photo}" alt="${pokemon.name}">
+        </div>
 
-            <div class="detail">
-                <ol class="types">
-                    ${pokemon.types.map((type) => `<li class="type ${type}">${type}</li>`).join('')}
-                </ol>
-
-                <img src="${pokemon.photo}"
-                     alt="${pokemon.name}">
-            </div>
-        </li>
+        
+    </li>
     `
 }
+
+function PokemonClickCard(expande, card) {
+
+    card.classList.toggle('expanded');
+    console.log(`Clicou no Pokémon: ${expande}`);
+}
+
 
 function loadPokemonItens(offset, limit) {
     pokeApi.getPokemons(offset, limit).then((pokemons = []) => {
@@ -45,3 +53,4 @@ loadMoreButton.addEventListener('click', () => {
         loadPokemonItens(offset, limit)
     }
 })
+

@@ -12,6 +12,8 @@ body {
     height: 100vh;
     padding: 1rem;
     background-color: #fff;
+    overflow: hidden;
+    transition: height 0.3s ease;
 }
 
 @media screen and (min-width: 992px) {
@@ -22,3 +24,4 @@ body {
         border-radius: 1rem;
     }
 }
+

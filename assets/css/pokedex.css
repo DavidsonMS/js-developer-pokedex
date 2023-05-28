@@ -6,6 +6,8 @@
     list-style: none;
 }
 
+
+
 .normal {
     background-color: #a6a877;
 }
@@ -84,7 +86,9 @@
     margin: .5rem;
     padding: 1rem;
     border-radius: 1rem;
+
 }
+
 
 .pokemon .number {
     color: #000;
@@ -145,6 +149,7 @@
     border: none;
     border-radius: 1rem;
 }
+
 
 @media screen and (min-width: 380px) {
     .pokemons {
